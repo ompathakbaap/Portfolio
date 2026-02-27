@@ -1,0 +1,359 @@
+{% extends "base.html" %}
+{% block content %}
+
+<section class="relative">
+  <div class="mx-auto max-w-6xl px-5 pt-14 md:pt-20">
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-10 items-center">
+      <div class="md:col-span-7">
+        <div class="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs text-slate-200/80">
+          <span class="h-2 w-2 rounded-full bg-emerald-400 animate-pulse"></span>
+          Open to internships • full‑stack & backend
+        </div>
+
+        <h1 class="mt-5 text-4xl md:text-6xl font-black tracking-tight leading-[1.02]">
+          Building <span class="text-gradient">fast</span>, <span class="text-gradient2">beautiful</span> products
+          that users love.
+        </h1>
+
+        <p class="mt-5 text-base md:text-lg text-slate-200/80 max-w-2xl">
+          I’m <span class="font-semibold text-slate-100">{{ profile.name }}</span> — {{ profile.title }}.
+          {{ data.summary }}
+        </p>
+
+        <div class="mt-8 flex flex-col sm:flex-row gap-3 sm:items-center">
+          <a class="btn-primary" href="#projects">View Projects</a>
+          <a class="btn-secondary" href="#contact">Let’s Connect</a>
+          <a class="btn-ghost" href="{{ url_for('resume') }}">Download Resume</a>
+        </div>
+
+        <div class="mt-10 grid grid-cols-2 sm:grid-cols-4 gap-3">
+          {% for h in data.highlights %}
+          <div class="statcard" data-tilt>
+            <div class="text-2xl font-extrabold statnum">{{ h.k }}</div>
+            <div class="text-xs text-slate-200/70 mt-1">{{ h.v }}</div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+
+      <div class="md:col-span-5">
+        <div class="relative rounded-3xl border border-white/10 bg-white/5 p-6 overflow-hidden shadow-xl">
+          <div class="absolute inset-0 opacity-50 bg-[radial-gradient(circle_at_30%_20%,rgba(99,102,241,0.35),transparent_40%),radial-gradient(circle_at_80%_60%,rgba(236,72,153,0.22),transparent_45%)]"></div>
+          <div class="relative">
+            <div class="flex items-center justify-between">
+              <div class="text-sm font-semibold text-slate-200/90">Quick snapshot</div>
+              <div class="chip">Flask • Tailwind • GSAP</div>
+            </div>
+
+            <div class="mt-5 flex items-center gap-4">
+              <div class="avatar">
+                <img src="{{ url_for('static', filename='img/avatar-placeholder.svg') }}" alt="Avatar" class="h-full w-full object-cover"/>
+              </div>
+              <div>
+                <div class="text-lg font-bold">{{ profile.name }}</div>
+                <div class="text-sm text-slate-200/70">{{ profile.location }}</div>
+                <div class="mt-2 flex items-center gap-2">
+                  <span class="pill">React</span>
+                  <span class="pill">Node.js</span>
+                  <span class="pill">Python</span>
+                  <span class="pill">MySQL</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="mt-6 grid grid-cols-1 gap-3">
+              <div class="infocard">
+                <div class="text-xs text-slate-200/60">Email</div>
+                <a class="link" href="mailto:{{ profile.email }}">{{ profile.email }}</a>
+              </div>
+              <div class="infocard">
+                <div class="text-xs text-slate-200/60">Phone</div>
+                <a class="link" href="tel:{{ profile.phone }}">{{ profile.phone }}</a>
+              </div>
+              <div class="infocard">
+                <div class="text-xs text-slate-200/60">Links</div>
+                <div class="flex flex-wrap gap-2">
+                  <a class="pilllink" href="{{ profile.github }}" target="_blank" rel="noreferrer">GitHub</a>
+                  <a class="pilllink" href="{{ profile.linkedin }}" target="_blank" rel="noreferrer">LinkedIn</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="mt-6 rounded-2xl border border-white/10 bg-black/30 p-4">
+              <div class="text-xs text-slate-200/70">What I optimize for</div>
+              <div class="mt-2 flex flex-wrap gap-2">
+                <span class="badge">Performance</span>
+                <span class="badge">Clean architecture</span>
+                <span class="badge">Great UX</span>
+                <span class="badge">Testing</span>
+                <span class="badge">Team collaboration</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="mt-4 text-xs text-slate-200/50">
+          Tip: replace the avatar in <span class="font-mono">static/img</span> with your photo.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- subtle grid -->
+  <div class="pointer-events-none absolute inset-0 -z-10 opacity-[0.12] [background-image:linear-gradient(to_right,rgba(255,255,255,0.08)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.08)_1px,transparent_1px)] [background-size:56px_56px]"></div>
+</section>
+
+<section id="about" class="mx-auto max-w-6xl px-5 mt-20 md:mt-28">
+  <div class="sectionhead" data-aos="fade-up">
+    <div class="eyebrow">About</div>
+    <h2 class="h2">Engineer mindset, product taste.</h2>
+    <p class="p">I build web apps that are responsive, maintainable, and fast — with a focus on user experience and clean code.</p>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-12 gap-6 mt-10">
+    <div class="md:col-span-7 card" data-aos="fade-up" data-aos-delay="50">
+      <h3 class="h3">What I bring</h3>
+      <ul class="list mt-4">
+        <li><span class="dot"></span>1+ year industry experience shipping React‑based interfaces and integrating backend services.</li>
+        <li><span class="dot"></span>Performance-first mindset (measurable improvements, profiling, optimization).</li>
+        <li><span class="dot"></span>Solid CS fundamentals (DSA, OS, architecture) and growing AI/Python skillset.</li>
+        <li><span class="dot"></span>Team collaboration: translating UI/UX requirements into production-ready code.</li>
+      </ul>
+    </div>
+
+    <div class="md:col-span-5 card" data-aos="fade-up" data-aos-delay="120">
+      <h3 class="h3">Currently</h3>
+      <div class="mt-4 space-y-3 text-slate-200/80">
+        <div class="flex items-start gap-3">
+          <span class="miniicon">🎓</span>
+          <div>
+            <div class="font-semibold">M.S. Computer Science</div>
+            <div class="text-sm text-slate-200/70">Long Island University • Expected 2026</div>
+          </div>
+        </div>
+        <div class="flex items-start gap-3">
+          <span class="miniicon">🧠</span>
+          <div>
+            <div class="font-semibold">Focus Areas</div>
+            <div class="text-sm text-slate-200/70">Full‑stack engineering • Python/AI • System design</div>
+          </div>
+        </div>
+        <div class="flex items-start gap-3">
+          <span class="miniicon">🚀</span>
+          <div>
+            <div class="font-semibold">Goal</div>
+            <div class="text-sm text-slate-200/70">Internship where I can ship features end‑to‑end and learn from strong engineers.</div>
+          </div>
+        </div>
+      </div>
+      <a href="#contact" class="mt-6 inline-flex btn-secondary w-full justify-center">Contact me</a>
+    </div>
+  </div>
+</section>
+
+<section id="experience" class="mx-auto max-w-6xl px-5 mt-20 md:mt-28">
+  <div class="sectionhead" data-aos="fade-up">
+    <div class="eyebrow">Experience</div>
+    <h2 class="h2">Impact, shipped.</h2>
+    <p class="p">Recent roles and measurable outcomes.</p>
+  </div>
+
+  <div class="mt-10 space-y-6">
+    {% for job in data.experience %}
+    <article class="card" data-aos="fade-up" data-aos-delay="{{ 60 * loop.index }}">
+      <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-3">
+        <div>
+          <h3 class="text-xl font-bold">{{ job.role }}</h3>
+          <div class="mt-1 text-slate-200/70">
+            <span class="font-semibold text-slate-200">{{ job.company }}</span>
+            <span class="text-white/20">•</span>
+            <span>{{ job.where }}</span>
+          </div>
+        </div>
+        <div class="chip">{{ job.dates }}</div>
+      </div>
+
+      <ul class="list mt-5">
+        {% for b in job.bullets %}
+        <li><span class="dot"></span>{{ b }}</li>
+        {% endfor %}
+      </ul>
+
+      <div class="mt-5 flex flex-wrap gap-2">
+        {% for t in job.tags %}
+          <span class="pill">{{ t }}</span>
+        {% endfor %}
+      </div>
+    </article>
+    {% endfor %}
+  </div>
+</section>
+
+<section id="projects" class="mx-auto max-w-6xl px-5 mt-20 md:mt-28">
+  <div class="sectionhead" data-aos="fade-up">
+    <div class="eyebrow">Projects</div>
+    <h2 class="h2">Work that tells a story.</h2>
+    <p class="p">A few highlights — swap links with your real repositories/demos.</p>
+  </div>
+
+  <div class="mt-10 grid grid-cols-1 md:grid-cols-2 gap-6">
+    {% for pr in data.projects %}
+    <a href="{{ pr.link }}" target="_blank" rel="noreferrer" class="card hovercard group" data-aos="fade-up" data-aos-delay="{{ 40 * loop.index }}">
+      <div class="flex items-start justify-between gap-3">
+        <h3 class="text-lg font-bold group-hover:text-white transition">{{ pr.name }}</h3>
+        <span class="arrow">↗</span>
+      </div>
+      <p class="mt-2 text-slate-200/75">{{ pr.desc }}</p>
+      <div class="mt-4 flex flex-wrap gap-2">
+        {% for s in pr.stack %}
+          <span class="badge">{{ s }}</span>
+        {% endfor %}
+      </div>
+
+      <div class="mt-6 rounded-2xl border border-white/10 bg-white/5 p-4">
+        <div class="text-xs text-slate-200/60">Why recruiters care</div>
+        <div class="mt-1 text-sm text-slate-200/80">
+          Clear scope • shipped end‑to‑end • measurable improvements • collaboration
+        </div>
+      </div>
+    </a>
+    {% endfor %}
+  </div>
+</section>
+
+<section id="skills" class="mx-auto max-w-6xl px-5 mt-20 md:mt-28">
+  <div class="sectionhead" data-aos="fade-up">
+    <div class="eyebrow">Skills</div>
+    <h2 class="h2">Tools I ship with.</h2>
+    <p class="p">Balanced between coding, fundamentals, and engineering practice.</p>
+  </div>
+
+  <div class="mt-10 grid grid-cols-1 md:grid-cols-2 gap-6">
+    {% for group, items in data.skills.items() %}
+    <div class="card" data-aos="fade-up" data-aos-delay="{{ 40 * loop.index }}">
+      <h3 class="h3">{{ group }}</h3>
+      <div class="mt-4 flex flex-wrap gap-2">
+        {% for it in items %}
+          <span class="pill">{{ it }}</span>
+        {% endfor %}
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+
+<section id="education" class="mx-auto max-w-6xl px-5 mt-20 md:mt-28">
+  <div class="sectionhead" data-aos="fade-up">
+    <div class="eyebrow">Education</div>
+    <h2 class="h2">Strong foundation.</h2>
+    <p class="p">Coursework + projects that translate into real engineering decisions.</p>
+  </div>
+
+  <div class="mt-10 grid grid-cols-1 gap-6">
+    {% for ed in data.education %}
+    <div class="card" data-aos="fade-up" data-aos-delay="{{ 60 * loop.index }}">
+      <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-3">
+        <div>
+          <h3 class="text-lg font-bold">{{ ed.degree }}</h3>
+          <div class="text-slate-200/70 mt-1">{{ ed.school }}</div>
+        </div>
+      </div>
+      <ul class="list mt-4">
+        {% for d in ed.details %}
+        <li><span class="dot"></span>{{ d }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+
+<section id="contact" class="mx-auto max-w-6xl px-5 mt-20 md:mt-28 pb-24">
+  <div class="sectionhead" data-aos="fade-up">
+    <div class="eyebrow">Contact</div>
+    <h2 class="h2">Let’s build something.</h2>
+    <p class="p">Fastest way to reach me is email. I usually reply within 24 hours.</p>
+  </div>
+
+  <div class="mt-10 grid grid-cols-1 md:grid-cols-12 gap-6">
+    <div class="md:col-span-7 card" data-aos="fade-up" data-aos-delay="70">
+      <h3 class="h3">Send a message</h3>
+      <p class="mt-2 text-slate-200/70 text-sm">
+        This form opens your email client. If you want a real backend mailer, I can wire it up (SendGrid/Mailgun).
+      </p>
+
+      <form class="mt-6 space-y-4" onsubmit="return openMailto(event)">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <label class="label">Name</label>
+            <input id="c_name" class="input" placeholder="Your name" required />
+          </div>
+          <div>
+            <label class="label">Email</label>
+            <input id="c_email" type="email" class="input" placeholder="you@example.com" required />
+          </div>
+        </div>
+
+        <div>
+          <label class="label">Subject</label>
+          <input id="c_subject" class="input" placeholder="Internship opportunity / Project collaboration" required />
+        </div>
+
+        <div>
+          <label class="label">Message</label>
+          <textarea id="c_message" class="input min-h-[140px]" placeholder="Hi Om, I saw your portfolio and..." required></textarea>
+        </div>
+
+        <button class="btn-primary w-full justify-center" type="submit">Compose Email</button>
+      </form>
+    </div>
+
+    <div class="md:col-span-5 space-y-6">
+      <div class="card" data-aos="fade-up" data-aos-delay="120">
+        <h3 class="h3">Details</h3>
+        <div class="mt-4 space-y-3 text-slate-200/80">
+          <div class="flex items-start gap-3">
+            <span class="miniicon">📍</span>
+            <div>
+              <div class="font-semibold">Location</div>
+              <div class="text-sm text-slate-200/70">{{ profile.location }}</div>
+            </div>
+          </div>
+          <div class="flex items-start gap-3">
+            <span class="miniicon">✉️</span>
+            <div>
+              <div class="font-semibold">Email</div>
+              <a class="link text-sm" href="mailto:{{ profile.email }}">{{ profile.email }}</a>
+            </div>
+          </div>
+          <div class="flex items-start gap-3">
+            <span class="miniicon">📞</span>
+            <div>
+              <div class="font-semibold">Phone</div>
+              <a class="link text-sm" href="tel:{{ profile.phone }}">{{ profile.phone }}</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card" data-aos="fade-up" data-aos-delay="160">
+        <h3 class="h3">Find me online</h3>
+        <div class="mt-4 flex flex-wrap gap-2">
+          <a class="pilllink" href="{{ profile.github }}" target="_blank" rel="noreferrer">GitHub</a>
+          <a class="pilllink" href="{{ profile.linkedin }}" target="_blank" rel="noreferrer">LinkedIn</a>
+          <a class="pilllink" href="{{ url_for('resume') }}">Resume (PDF)</a>
+        </div>
+
+        <div class="mt-6 rounded-2xl border border-white/10 bg-white/5 p-4">
+          <div class="text-xs text-slate-200/60">Recruiter note</div>
+          <div class="mt-1 text-sm text-slate-200/80">
+            If you share the job description, I can tailor this portfolio’s headline + project bullets to match it.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}
